@@ -1,7 +1,8 @@
 const tabButtons = document.querySelectorAll('.design-list__item');
 const tabDescriptions = document.querySelectorAll('.design__descr');
 const tabImages = document.querySelectorAll('.design-images');
-const title = document.querySelector('title');
+const tabImagesBlock = document.querySelectorAll('.design-block__img');
+const designTitle = document.querySelectorAll('.design__title');
 
 function changeContent(array, value) {
   array.forEach((element) => {
@@ -13,18 +14,27 @@ function changeContent(array, value) {
   });
 }
 
-function changeTitle(text) {
-  title.innerText = text;
+function changeTitle(block = designTitle, indexTitle = 0) {
+  block.forEach((title, idx) => {
+    if (indexTitle === idx) {
+      title.classList.remove('hidden');
+      document.title = title.innerText;
+    } else {
+      title.classList.add('hidden');
+    }
+  });
 }
 
-tabButtons.forEach((tabButton) => {
+changeTitle();
+
+tabButtons.forEach((tabButton, index) => {
   tabButton.addEventListener('click', (e) => {
     const dataValue = tabButton.dataset.tabsHandler;
-    const titleText = tabButton.innerText;
 
     changeContent(tabDescriptions, dataValue);
     changeContent(tabImages, dataValue);
-    changeTitle(titleText);
+    changeContent(tabImagesBlock, dataValue);
+    changeTitle(designTitle, index);
 
     tabButtons.forEach((btn) => {
       if (btn === e.target) {
