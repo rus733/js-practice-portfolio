@@ -1,5 +1,5 @@
 const accordeon = document.querySelector('.feature-list');
-const accordeonButtons = accordeon.querySelectorAll('.feature__link'); //feature-sub
+const accordeonButtons = accordeon.querySelectorAll('.feature__link');
 
 accordeonButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -8,7 +8,7 @@ accordeonButtons.forEach((button) => {
       button.nextElementSibling.classList.add('hidden');
     });
     button.classList.toggle('feature__link_active');
+    // next element for button
     button.nextElementSibling.classList.toggle('hidden');
-    //console.log(button.nextElementSibling);// next element for button
   });
 });
