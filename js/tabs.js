@@ -22,14 +22,6 @@ function changeTitle(block) {
   });
 }
 
-// function changeTitle(block) {
-//   block.forEach((title) => {
-//     if (!title.classList.contains('hidden')) {
-//       document.title = title.innerText;
-//     }
-//   });
-//}
-
 changeTitle(designTitle);
 
 tabButtons.forEach((tabButton) => {
@@ -41,11 +33,6 @@ tabButtons.forEach((tabButton) => {
     changeContent(tabImagesBlock, dataValue);
     changeContent(designTitle, dataValue);
     changeTitle(designTitle);
-    // designTitle.forEach((title) => {
-    //   if (!title.classList.contains('hidden')) {
-    //     document.title = title.innerText;
-    //   }
-    // });
 
     tabButtons.forEach((btn) => {
       if (btn === e.target) {
