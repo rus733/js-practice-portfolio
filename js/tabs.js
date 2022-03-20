@@ -14,27 +14,38 @@ function changeContent(array, value) {
   });
 }
 
-function changeTitle(block = designTitle, indexTitle = 0) {
-  block.forEach((title, idx) => {
-    if (indexTitle === idx) {
-      title.classList.remove('hidden');
+function changeTitle(block) {
+  block.forEach((title) => {
+    if (!title.classList.contains('hidden')) {
       document.title = title.innerText;
-    } else {
-      title.classList.add('hidden');
     }
   });
 }
 
-changeTitle();
+// function changeTitle(block) {
+//   block.forEach((title) => {
+//     if (!title.classList.contains('hidden')) {
+//       document.title = title.innerText;
+//     }
+//   });
+//}
 
-tabButtons.forEach((tabButton, index) => {
+changeTitle(designTitle);
+
+tabButtons.forEach((tabButton) => {
   tabButton.addEventListener('click', (e) => {
     const dataValue = tabButton.dataset.tabsHandler;
 
     changeContent(tabDescriptions, dataValue);
     changeContent(tabImages, dataValue);
     changeContent(tabImagesBlock, dataValue);
-    changeTitle(designTitle, index);
+    changeContent(designTitle, dataValue);
+    changeTitle(designTitle);
+    // designTitle.forEach((title) => {
+    //   if (!title.classList.contains('hidden')) {
+    //     document.title = title.innerText;
+    //   }
+    // });
 
     tabButtons.forEach((btn) => {
       if (btn === e.target) {
