@@ -1,5 +1,6 @@
 const timerBlock = document.querySelector('.timer__time');
-const deadline = '31 march 2022';
+const daysBlock = document.querySelector('.timer__day');
+const deadline = '22 march 2022';
 
 let intervalID;
 
@@ -11,13 +12,18 @@ const updateClock = () => {
   const date = new Date().getTime();
   const dateDeadline = new Date(deadline).getTime();
   const timeRemaining = (dateDeadline - date) / 1000; // переведем в секунды все оставщееся время
+
   //получим часы
   const hours = Math.floor(timeRemaining / 60 / 60);
+  //получим дни
+  const days = Math.floor(timeRemaining / 60 / 60 / 24);
+  console.log('days: ', days);
   // получим минуты
   const minutes = Math.floor((timeRemaining / 60) % 60); // вынесем из числа всех минут  все  часы применив целочисленное деление на 60
   const seconds = Math.floor(timeRemaining % 60);
+  daysBlock.textContent = `${format(days)}`;
 
-  timerBlock.textContent = `${format(hours)}:${format(minutes)}:${format(seconds)}`;
+  timerBlock.textContent = `${format(hours)}:${format(minutes)}:${format(seconds)}`; //daysBlock
 
   if (timeRemaining <= 0) {
     clearInterval(intervalID);
