@@ -38,6 +38,10 @@ forms.forEach((form) => {
       })
       .finally(() => {
         form.reset();
+        //закрываем окно popup
+        setTimeout(() => {
+          document.querySelector('.modal').classList.add('hidden');
+        }, 1000);
       });
   });
 });
