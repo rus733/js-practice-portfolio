@@ -1,6 +1,4 @@
-//const form = document.querySelector('.form-test-drive'); //form-test-drive
 const forms = document.querySelectorAll('form');
-//const closeModal = document.querySelectorAll('.more').classList.remove('hidden');
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
 forms.forEach((form) => {
@@ -21,18 +19,10 @@ forms.forEach((form) => {
       method: 'POST',
       // поставим свои данные в body
       body: JSON.stringify(body), //переведем обьект в формат строки
-      // уберем тестовые данные
-      // body: JSON.stringify({
-      //   title: 'foo',
-      //   body: 'bar',
-      //   userId: 1,
-      // }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
-      // .then((response) => response.json())
-      // .then((data) => console.log(data));
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -48,8 +38,6 @@ forms.forEach((form) => {
       })
       .finally(() => {
         form.reset();
-        //closeModal();
-        //document.querySelectorAll('.more').classList.remove('hidden');
       });
   });
 });
