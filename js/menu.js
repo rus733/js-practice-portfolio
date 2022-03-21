@@ -1,6 +1,6 @@
 const burger = document.querySelector('.humburger-menu'); //
 const menu = document.querySelector('.menu');
-const menuLinks = document.querySelectorAll('.menu-list__item');
+const menuLinks = document.querySelectorAll('.menu-list__link');
 
 burger.addEventListener('click', () => {
   menu.classList.toggle('menu-active');

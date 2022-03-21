@@ -10,6 +10,6 @@ modalButtons.forEach((button) => {
 modal.addEventListener('click', (e) => {
   const target = e.target;
   if (target.closest('.overlay') || target.classList.contains('modal__close')) {
-    modal.classList.add('hidden');
+    modal.classList.toggle('hidden');
   }
 });
