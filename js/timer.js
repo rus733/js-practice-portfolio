@@ -2,10 +2,14 @@ const timerBlock = document.querySelector('.timer__time');
 //const daysBlock = document.querySelector('.timer__day');//ver 1
 const deadline = '31 march 2022';
 let intervalID;
+
 const format = (num) => (num >= 10 ? num : `0${num}`);
+// не совсем полная версия
+//const wordsForms2 = (arg, words) => (arg >= 5 || arg < 1 ? words[2] : arg >= 2 ? words[1] : words[0]);
+//['день', 'дня', 'дней']//
 const wordsForms = (value, words) => {
   value = Math.abs(value) % 100;
-  var num = value % 10;
+  let num = value % 10;
   if (value > 10 && value < 20) return words[2];
   if (num > 1 && num < 5) return words[1];
   if (num == 1) return words[0];
