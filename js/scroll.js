@@ -1,10 +1,12 @@
-const scrollBtn = document.querySelector('.main__scroll');
-const links = document.querySelectorAll('.menu-list__link');
+const scrollBtn = document.querySelectorAll('.main__scroll');
+const buttons = document.querySelectorAll('.main__button');
+const menuLinks = document.querySelectorAll('.menu-list__link');
+const links = [...menuLinks, ...scrollBtn, ...buttons];
 
-const scroll = (block) => {
-  block.addEventListener('click', (e) => {
+links.forEach((link) => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    const id = block.getAttribute('href').substring(1); //отрежем #
+    const id = link.getAttribute('href').substring(1); //отрежем #
     const section = document.getElementById(id); // найдем секцию
 
     if (section) {
@@ -21,10 +23,4 @@ const scroll = (block) => {
       });
     }
   });
-};
-
-scroll(scrollBtn);
-
-links.forEach((link) => {
-  scroll(link);
 });
