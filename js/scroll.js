@@ -8,9 +8,15 @@ links.forEach((link) => {
     const section = document.getElementById(id); // найдем секцию
 
     if (section) {
-      section.scrollIntoView({
-        block: 'start',
+      // section.scrollIntoView({
+      //   block: 'start',
+      //   behavior: 'smooth',
+      // });
+      // полифил для плавной  прокрутки  макбуков и сафари
+      seamless.scrollIntoView(section, {
         behavior: 'smooth',
+        block: 'start',
+        inline: 'center',
       });
     }
   });
@@ -22,9 +28,14 @@ scrollBtn.addEventListener('click', (e) => {
   const section = document.getElementById(id); // найдем секцию
 
   if (section) {
-    section.scrollIntoView({
-      block: 'start',
+    // section.scrollIntoView({
+    //   block: 'start',
+    //   behavior: 'smooth',
+    // });
+    seamless.scrollIntoView(section, {
       behavior: 'smooth',
+      block: 'start',
+      inline: 'center',
     });
   }
 });
