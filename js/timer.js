@@ -1,6 +1,6 @@
 const timerBlock = document.querySelector('.timer__time');
-const daysBlock = document.querySelector('.timer__day');
-const deadline = '27 march 2022';
+//const daysBlock = document.querySelector('.timer__day');//ver 1
+const deadline = '31 march 2022';
 
 let intervalID;
 
@@ -14,22 +14,47 @@ function wordsForms(value, words) {
   if (num == 1) return words[0];
   return words[2];
 }
-// daysForms(['день', 'дня', 'дней']);
-// hoursForms(['час', 'часа', 'часов']);
-// minutesForms(['минута', 'минуты', 'минут']);
-// secondsForms(['секунда', 'секунды', 'секунд']);
 
 const updateClock = () => {
-  const date = new Date().getTime(); //текущее время
+  const dateNow = new Date().getTime(); //текущее время
+  //const dateDeadline = new Date(2022, 2, 31, 0, 0, 0); // В формате: год, месяц (от 0), число, час, минута, секунда
   const dateDeadline = new Date(deadline).getTime();
-  const timeRemaining = (dateDeadline - date) / 1000; // остаток времени в сек
+  const timeRemaining = (dateDeadline - dateNow) / 1000; // остаток времени в сек
   const hours = Math.floor((timeRemaining / 60 / 60) % 24);
   const days = Math.floor(timeRemaining / 60 / 60 / 24);
   const minutes = Math.floor((timeRemaining / 60) % 60);
   const seconds = Math.floor(timeRemaining % 60);
+  // ver 1
+  //daysBlock.textContent = `${format(days)} ${wordsForms(days, ['день', 'дня', 'дней'])}`;
+  // timerBlock.textContent = `${format(hours)}:${format(minutes)}:${format(seconds)}`;
+  // daysForms(['день', 'дня', 'дней']);
+  // hoursForms(['час', 'часа', 'часов']);
+  // minutesForms(['минута', 'минуты', 'минут']);
+  // secondsForms(['секунда', 'секунды', 'секунд']);
 
-  daysBlock.textContent = `${format(days)} ${wordsForms(days, ['день', 'дня', 'дней'])}`;
-  timerBlock.textContent = `${format(hours)}:${format(minutes)}:${format(seconds)}`;
+  // ver 2
+  timerBlock.innerHTML = `
+    <table>
+        <tr>
+          <td>${format(days)}</td>
+          <td style="padding-left:0.2em;padding-right:0.15em;">:</td>
+          <td>${format(hours)}</td>
+          <td style="padding-left:0.2em;padding-right:0.15em;">:</td>
+          <td>${format(minutes)}</td>
+          <td style="padding-left:0.2em;padding-right:0.15em;">:</td>
+          <td>${format(seconds)}</td>
+        </tr>
+        <tr style="font-size:0.2em;">
+          <td>${wordsForms(days, ['день', 'дня', 'дней'])}</td>
+          <td></td>
+          <td>${wordsForms(hours, ['час', 'часа', 'часов'])}</td>
+          <td></td>
+          <td>${wordsForms(minutes, ['минута', 'минуты', 'минут'])}</td>
+          <td></td>
+          <td>${wordsForms(seconds, ['секунда', 'секунды', 'секунд'])}</td>
+        </tr>
+      </table>
+  `;
 
   if (timeRemaining <= 0) {
     timerBlock.textContent = `00:00:00`;
