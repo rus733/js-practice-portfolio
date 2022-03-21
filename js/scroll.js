@@ -4,11 +4,16 @@ const links = document.querySelectorAll('.menu-list__link');
 const scroll = (block) => {
   block.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(block);
     const id = block.getAttribute('href').substring(1); //отрежем #
     const section = document.getElementById(id); // найдем секцию
 
     if (section) {
+      // Нативный scrollIntoView - работает в Хроме
+      // section.scrollIntoView({
+      //   block: 'start',
+      //   behavior: 'smooth',
+      // });
+      // scrollIntoView через полифилл, работает также в Сафари
       seamless.scrollIntoView(section, {
         behavior: 'smooth',
         block: 'start',
