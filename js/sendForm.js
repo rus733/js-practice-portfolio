@@ -7,8 +7,7 @@ forms.forEach((form) => {
 
     const formData = new FormData(form);
     const body = {};
-
-    // добавим в formData пометку формы в виде ключ-значение
+    // добавим в formData пометку формы в виде ключ-значение(класс элемента)
     formData.append('form', form.classList.value);
 
     formData.forEach((value, field) => {
