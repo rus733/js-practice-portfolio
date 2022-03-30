@@ -5,5 +5,6 @@
 - JavaScript
 - НТМL
 - CSS
+- View:  https://rus733.github.io/js-practice-portfolio/
 
 
